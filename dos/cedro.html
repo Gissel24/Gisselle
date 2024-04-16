@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Cedro - ReforestApp</title>
+    <style>
+        /* Estilo global */
+        body {
+            background-color: #f2f2f2;
+            color: #000000; /* Cambio de color de texto */
+            font-family: 'Montserrat', sans-serif; /* Cambio de fuente */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Estilo para la imagen de fondo */
+        #background-left, #background-right {
+            position: absolute;
+            width: 25%;
+            height: auto;
+            top: 0;
+            bottom: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #background-left {
+            left: 0;
+            background-image: url('cedro_left.jpg'); /* Cambiar el nombre de la imagen */
+        }
+
+        #background-right {
+            right: 0;
+            background-image: url('cedro_right.jpg'); /* Cambiar el nombre de la imagen */
+        }
+
+        /* Estilo para el encabezado */
+        header {
+            background-color: #4a773c; /* Cambio de color de fondo */
+            color: #fff; /* Cambio de color de texto */
+            padding: 15px 1;
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Asegura que el encabezado esté sobre las imágenes de fondo */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Estilo para el contenido */
+        main {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Asegura que el contenido esté sobre las imágenes de fondo */
+        }
+
+        #contenido {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #487b3c; /* Cambio de color de texto */
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background-color: #1e504d; /* Cambio de color de fondo */
+            color: #fff; /* Cambio de color de texto */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #89c4a7; /* Cambio de color de fondo al pasar el cursor */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Información del</h1>
+        <h1>Cedro</h1>
+    </header>
+    <main>
+        <section id="contenido">
+            <h2>Características:</h2>
+            <p>El cedro es un árbol de hoja perenne y conífera de gran tamaño y longevidad.</p>
+            <p>Es conocido por su madera aromática y duradera, así como por su resistencia a las plagas y enfermedades.</p>
+
+            <h2>Ubicación y clima:</h2>
+            <p>El cedro se encuentra comúnmente en regiones con climas templados a subtropicales.</p>
+            <p>Prefiere suelos bien drenados y exposición a pleno sol.</p>
+
+            <h2>Cuidados:</h2>
+            <p>1. Proporcione riego regular, especialmente durante los primeros años de crecimiento.</p>
+            <p>2. Fertilice en primavera con un fertilizante equilibrado.</p>
+            <p>3. Pode para mantener una forma deseada y eliminar ramas muertas o dañadas.</p>
+
+            <button class="button" onclick="volver()">Volver</button>
+        </section>
+    </main>
+
+    <div id="background-left"></div>
+    <div id="background-right"></div>
+
+    <script>
+        function volver() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

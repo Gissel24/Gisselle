@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árboles de Clima Cálido - ReforestApp</title>
+    <style>
+        /* Estilo global */
+        body {
+            background-image: url('fondocomenzar.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        /* Estilo para el encabezado */
+        header {
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Estilo para los botones */
+        .opciones-arboles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .opcion-arbol {
+            margin: 10px;
+        }
+
+        .boton-arbol {
+            background-color: #035806;
+            color: white;
+            padding: 20px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .boton-arbol:hover {
+            background-color: #d4ff00;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Árboles de Clima Cálido</h1>
+    </header>
+    <div class="opciones-arboles">
+        <div class="opcion-arbol">
+            <button class="boton-arbol" onclick="window.location.href='informacion_arbol.html?arbol=palmera'">Palmera</button>
+        </div>
+        <div class="opcion-arbol">
+            <button class="boton-arbol" onclick="window.location.href='informacion_arbol.html?arbol=banana'">Banana</button>
+        </div>
+        <div class="opcion-arbol">
+            <button class="boton-arbol" onclick="window.location.href='informacion_arbol.html?arbol=aguacate'">Aguacate</button>
+        </div>
+        <div class="opcion-arbol">
+            <button class="boton-arbol" onclick="window.location.href='informacion_arbol.html?arbol=mango'">Mango</button>
+        </div>
+        <!-- Puedes agregar más opciones de árboles aquí -->
+    </div>
+</body>
+
+</html>

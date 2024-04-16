@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árboles de Sombra - MapsTree</title>
+    <style>
+        /* Estilo global */
+        body {
+            background-image: url('fondocomenzar.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Estilo para el encabezado */
+        header {
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 20px; /* Ajuste aquí */
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilo para el contenido */
+        main {
+            text-align: center;
+            z-index: 0;
+        }
+
+        #contenido {
+            max-width: 600px;
+            margin-top: 80px; /* Ajuste aquí */
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2a0e8f;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            background-color: #2a0e8f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #eeff00;
+        }
+    </style>
+</head>
+
+<body>
+
+<body>
+    <header>
+        <h1>¡Descubre el Mundo de los Árboles de Sombra!</h1>
+    </header>
+    
+
+    <main>
+        <section id="contenido">
+            <h2>Selecciona un árbol de sombra:</h2>
+
+            <select id="arboles_frutales">
+                <option value="cedro">cedro</option>
+                <option value="Flamboyán">Flamboyán</option>
+                <option value="ceiba">ceiba</option>
+                <option value="Caoba ">Caoba </option>
+                <option value="Ficus ">Ficus </option>
+            </select>
+            <button onclick="verInformacion()">Ver información</button>
+
+            <script>
+                function verInformacion() {
+                    var arbolSeleccionado = document.getElementById("arboles_frutales").value;
+                    if (arbolSeleccionado === "cedro") {
+                        window.location.href = "cedro.html";
+                    } else if (arbolSeleccionado === "Flamboyán") {
+                        window.location.href = "flamboyan.html";
+                    } else if (arbolSeleccionado === "ceiba") {
+                        window.location.href = "ceiba.html";
+                    } else if (arbolSeleccionado === "Caoba") {
+                        window.location.href = "caoba.html";
+                    } else if (arbolSeleccionado === "Ficus") {
+                        window.location.href = "Ficus.html";
+                    }
+                }
+            </script>
+        </section>
+    </main>
+</body>
+
+</html>

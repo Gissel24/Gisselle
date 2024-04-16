@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapsTree - Comenzar Aventura</title>
+    <link rel="stylesheet" href="esti.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Agrega Font Awesome -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #6eb0ed;
+            background-image: url('fondocomenzar.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+
+        #contenido {
+            text-align: center;
+            color: #fff;
+        }
+
+        .texto-grande {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .texto-creativo {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        #opciones {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .opcion {
+            font-family: 'Poppins', sans-serif;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px 30px;
+            margin: 0 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .opcion:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilos para el encabezado MapsTree */
+        .logo {
+            font-size: 60px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: glow 2s infinite alternate; /* Agrega un efecto de brillo intermitente */
+        }
+
+        /* Animación para el efecto de brillo */
+        @keyframes glow {
+            from {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            to {
+                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+            }
+        }
+
+        /* Estilos para los iconos */
+        .icono {
+            color: #fff;
+            font-size: 24px;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+    </style>
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Jacquard+24&display=swap" rel="stylesheet">
+</head>
+</head>
+
+<body>
+    <header>
+ 
+        <a href="javascript:history.back()" class="icono"><i class="fas fa-arrow-left"></i></a>
+        <h1 class="logo">MapsTree</h1> <!-- Aplica la clase de estilo al encabezado MapsTree -->
+    </header>
+    <main>
+        <section id="contenido">
+            <p class="texto-grande">¡Bienvenido a la aventura de MapsTree!</p>
+            <p class="texto-creativo">Selecciona una opción para comenzar:</p>
+            <div id="opciones">
+                <a href="asociaciones.html" class="opcion">Asociaciones</a>
+                <a href="seguimiento.html" class="opcion">Seguimiento</a>
+                <a href="informacion.html" class="opcion">Información</a>
+                <a href="eventos.html" class="opcion">Eventos</a>
+                <a href="donaciones.html" class="opcion">Donaciones</a>
+                <a href="Foro.html" class="opcion">Foro</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

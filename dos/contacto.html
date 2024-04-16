@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Importar los iconos de Font Awesome -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4cadf3;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f8ff; /* Color azul pastel */
+
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #contactos {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .contacto {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contacto:hover {
+            background-color: #84f5db;
+        }
+
+        .nombre {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .info {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .accion {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .accion button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 0 5px;
+        }
+
+        .accion button:hover {
+            background-color: #0056b3;
+        }
+
+        .icono {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"><i class="fas fa-arrow-left"></i></a>
+        <h1>Contactos</h1>
+
+        <ul id="contactos">
+            <li class="contacto" onclick="showContactInfo('+527751869733', 'betsy@gmail.com', 'betsy_insta')">
+                <p class="nombre">Betsy Susana</p>
+                <p class="info"><i class="fas fa-phone icono"></i><span class="numero">+52 775 186 9733</span></p>
+                <p class="info"><i class="far fa-envelope icono"></i><span class="correo">betsy@gmail.com</span></p>
+                <p class="info"><i class="fab fa-instagram icono"></i><span class="instagram">betsy_insta</span></p>
+            </li>
+            <li class="contacto" onclick="showContactInfo('+527752001244', 'zeus@gmail.com', 'zeus_insta')">
+                <p class="nombre">Zeus Hasel</p>
+                <p class="info"><i class="fas fa-phone icono"></i><span class="numero">+52 775 200 1244</span></p>
+                <p class="info"><i class="far fa-envelope icono"></i><span class="correo">zeus@gmail.com</span></p>
+                <p class="info"><i class="fab fa-instagram icono"></i><span class="instagram">zeus_insta</span></p>
+            </li>
+            <li class="contacto" onclick="showContactInfo('+527751441568', 'oded@gmail.com', 'oded_insta')">
+                <p class="nombre">Oded Hernandez</p>
+                <p class="info"><i class="fas fa-phone icono"></i><span class="numero">+52 775 144 1568</span></p>
+                <p class="info"><i class="far fa-envelope icono"></i><span class="correo">oded@gmail.com</span></p>
+                <p class="info"><i class="fab fa-instagram icono"></i><span class="instagram">oded_insta</span></p>
+            </li>
+            <li class="contacto" onclick="showContactInfo('+527751292317', '2134131@upt.edu.mx', 'giselmc_24')">
+                <p class="nombre">Iris Gisselle</p>
+                <p class="info"><i class="fas fa-phone icono"></i><span class="numero">+52 775 129 2317</span></p>
+                <p class="info"><i class="far fa-envelope icono"></i><span class="correo">2134131@upt.edu.mx</span></p>
+                <p class="info"><i class="fab fa-instagram icono"></i><span class="instagram">iris_insta</span></p>
+            </li>
+            <!-- Agrega más elementos <li> según sea necesario -->
+        </ul>
+
+        <div id="infoContacto" style="display: none;">
+            <p>Número de teléfono: <span id="numero"></span></p>
+            <p>Correo electrónico: <span id="correo"></span></p>
+            <p>Instagram: <span id="instagram"></span></p>
+            <div class="accion">
+                <button onclick="openWhatsApp()"><i class="fab fa-whatsapp icono"></i> Abrir en WhatsApp</button>
+                <button onclick="sendEmail()"><i class="far fa-envelope icono"></i> Enviar correo</button>
+                <button onclick="openInstagram()"><i class="fab fa-instagram icono"></i> Abrir en Instagram</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showContactInfo(numero, correo, instagram) {
+            document.getElementById("numero").textContent = numero;
+            document.getElementById("correo").textContent = correo;
+            document.getElementById("instagram").textContent = instagram;
+            document.getElementById("infoContacto").style.display = "block";
+        }
+
+        function openWhatsApp() {
+            var numero = document.getElementById("numero").textContent;
+            if (numero) {
+                window.open("https://wa.me/" + numero, "_blank");
+            } else {
+                alert("Selecciona un contacto primero.");
+            }
+        }
+
+        function sendEmail() {
+            var correo = document.getElementById("correo").textContent;
+            if (correo) {
+                window.location.href = "mailto:" + correo;
+            } else {
+                alert("Selecciona un contacto primero.");
+            }
+        }
+
+        function openInstagram() {
+            var instagram = document.getElementById("instagram").textContent;
+            if (instagram) {
+                window.open("https://www.instagram.com/" + instagram, "_blank");
+            } else {
+                alert("Selecciona un contacto primero.");
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árboles Frutales - ReforestApp</title>
+    <style>
+        /* Estilo global */
+        body {
+            background-image: url('fondocomenzar.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Estilo para el encabezado */
+        header {
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 20px; /* Ajuste aquí */
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilo para el contenido */
+        main {
+            text-align: center;
+            z-index: 0;
+        }
+
+        #contenido {
+            max-width: 600px;
+            margin-top: 80px; /* Ajuste aquí */
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0e8f19;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            background-color: #07932a;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #eeff00;
+        }
+    </style>
+</head>
+
+<body>
+
+<body>
+    <header>
+        <h1>¡Descubre el Mundo de los Árboles Frutales!</h1>
+    </header>
+    
+
+    <main>
+        <section id="contenido">
+            <h2>Selecciona un árbol frutal:</h2>
+
+            <select id="arboles_frutales">
+                <option value="manzano">Manzano</option>
+                <option value="naranjo">Naranjo</option>
+                <option value="mango">Mango</option>
+                <option value="limonero">Limonero</option>
+                <option value="cerezo">Cerezo</option>
+            </select>
+            <button onclick="verInformacion()">Ver información</button>
+
+            <script>
+                function verInformacion() {
+                    var arbolSeleccionado = document.getElementById("arboles_frutales").value;
+                    if (arbolSeleccionado === "manzano") {
+                        window.location.href = "manzano.html";
+                    } else if (arbolSeleccionado === "naranjo") {
+                        window.location.href = "naranjo.html";
+                    } else if (arbolSeleccionado === "mango") {
+                        window.location.href = "mango.html";
+                    } else if (arbolSeleccionado === "limonero") {
+                        window.location.href = "limonero.html";
+                    } else if (arbolSeleccionado === "cerezo") {
+                        window.location.href = "cerezo.html";
+                    }
+                }
+            </script>
+        </section>
+    </main>
+</body>
+
+</html>

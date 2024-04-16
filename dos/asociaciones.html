@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asociaciones - ReforestApp</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Hoja de estilos de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #6eb0ed;
+            background-image: url('fondocomenzar.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #000000;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            position: relative;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        #contenido {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+
+        .opcion {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        .opcion:hover {
+            background-color: #45a049;
+        }
+
+        #mapa {
+            width: 80%;
+            height: 400px;
+            margin-top: 20px;
+        }
+
+        #clima {
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .icono {
+            color: #ffffff;
+            margin: 0 10px 0 0;
+            font-size: 24px;
+            text-decoration: none;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        #sidePanel {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        #sidePanel.open {
+            left: 0;
+        }
+
+        .opciones-siembra {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .boton-siembra {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        .boton-siembra:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Asociaciones</h1>
+        <nav>
+            <a href="index.html" class="opcion">Inicio</a>
+            <a href="asociaciones.html" class="opcion">Asociaciones</a>
+            <a href="informacion.html" class="opcion">Información</a>
+            <a href="eventos.html" class="opcion">Eventos</a>
+            <a href="Seguimiento.html" class="opcion">Seguimiento</a>
+            <a href="Foro.html" class="opcion">Foro</a>
+            <a href="javascript:history.back()" class="icono"><i class="fas fa-arrow-left"></i></a>
+        </nav>
+    </header>
+    <main>
+        <section id="contenido">
+            <p>Aquí puedes encontrar información sobre asociaciones cercanas.</p>
+            <div id="mapa"></div>
+            <div id="clima"></div>
+            <div class="opciones-siembra" id="opcionesSiembra">
+                <button class="boton-siembra boton-opcion-siembra-calor" onclick="redirigirACalor()">Árboles para Climas Calurosos</button>
+                <button class="boton-siembra boton-opcion-siembra-frio" onclick="redirigirAFrio()">Árboles para Climas Fríos</button>
+            </div>
+            <button class="boton-siembra boton-ver-opciones-siembra" onclick="toggleOpcionesSiembra()">Ver Opciones de Siembra</button>
+        </section>
+    </main>
+
+    <div id="sidePanel">
+        <h2 id="direccionNombre"></h2>
+        <p id="direccionInfo">Haz clic en un marcador para ver la información.</p>
+    </div>
+
+    <!-- Script de Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Función para mapear las descripciones climáticas
+        function mapearDescripcionClimatica(descripcion) {
+            switch (descripcion.toLowerCase()) {
+                case 'clouds':
+                    return 'Nublado';
+                case 'clear':
+                    return 'Despejado';
+                case 'rain':
+                    return 'Lluvioso';
+                case 'drizzle':
+                    return 'Llovizna';
+                case 'thunderstorm':
+                    return 'Tormenta eléctrica';
+                case 'snow':
+                    return 'Nevado';
+                case 'mist':
+                    return 'Neblina';
+                case 'smoke':
+                    return 'Humo';
+                case 'haze':
+                    return 'Neblina';
+                case 'fog':
+                    return 'Niebla';
+                default:
+                    return descripcion;
+            }
+        }
+
+        // Función para obtener y mostrar información meteorológica
+        function obtenerClima(latitud, longitud) {
+            var apiKey = 'a3088ab8dd5af196c907854efa7369ee'; // Reemplaza 'TU_CLAVE_DE_API_DE_OPENWEATHERMAP' con tu clave de API
+            var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitud + '&lon=' + longitud + '&appid=' + apiKey + '&lang=es&units=metric';
+
+            fetch(apiUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    var climaElement = document.getElementById('clima');
+                    var descripcion = mapearDescripcionClimatica(data.weather[0].main); // Mapear la descripción climática
+                    var temperatura = data.main.temp;
+                    var probabilidadDePrecipitacion = data.clouds.all;
+                    var humedad = data.main.humidity;
+                    var velocidadViento = data.wind.speed;
+                    var direccionViento = data.wind.deg;
+
+                    // Convertir dirección del viento a texto
+                    var direccionTexto = "";
+                    if (direccionViento >= 337.5 || direccionViento < 22.5) {
+                        direccionTexto = "Norte";
+                    } else if (direccionViento >= 22.5 && direccionViento < 67.5) {
+                        direccionTexto = "Noreste";
+                    } else if (direccionViento >= 67.5 && direccionViento < 112.5) {
+                        direccionTexto = "Este";
+                    } else if (direccionViento >= 112.5 && direccionViento < 157.5) {
+                        direccionTexto = "Sureste";
+                    } else if (direccionViento >= 157.5 && direccionViento < 202.5) {
+                        direccionTexto = "Sur";
+                    } else if (direccionViento >= 202.5 && direccionViento < 247.5) {
+                        direccionTexto = "Suroeste";
+                    } else if (direccionViento >= 247.5 && direccionViento < 292.5) {
+                        direccionTexto = "Oeste";
+                    } else if (direccionViento >= 292.5 && direccionViento < 337.5) {
+                        direccionTexto = "Noroeste";
+                    }
+
+                    // Mostrar información del clima en el elemento HTML
+                    climaElement.innerHTML = 'Clima: ' + descripcion + '<br>' +
+                                             'Temperatura: ' + temperatura + '°C<br>' +
+                                             'Prob. de precipitaciones: ' + probabilidadDePrecipitacion + '%<br>' +
+                                             'Humedad: ' + humedad + '%<br>' +
+                                             'Viento: ' + direccionTexto + ' a ' + velocidadViento + ' km/h';
+
+                    // Mostrar u ocultar opciones de siembra según la temperatura
+                    var opcionesSiembra = document.getElementById('opcionesSiembra');
+                    var botonVerOpciones = document.querySelector('.boton-ver-opciones-siembra');
+                    if (temperatura >= 25) {
+                        document.querySelectorAll('.boton-opcion-siembra-calor').forEach(function(boton) {
+                            boton.style.display = 'block';
+                        });
+                        document.querySelectorAll('.boton-opcion-siembra-frio').forEach(function(boton) {
+                            boton.style.display = 'none';
+                        });
+                        botonVerOpciones.textContent = 'Ocultar Opciones de Siembra';
+                    } else {
+                        document.querySelectorAll('.boton-opcion-siembra-calor').forEach(function(boton) {
+                            boton.style.display = 'none';
+                        });
+                        document.querySelectorAll('.boton-opcion-siembra-frio').forEach(function(boton) {
+                            boton.style.display = 'none';
+                        });
+                        botonVerOpciones.textContent = 'Ver Opciones de Siembra';
+                    }
+                })
+                .catch(function (error) {
+                    console.log('Error al obtener datos del clima:', error);
+                });
+        }
+
+        // Función para redirigir a la página de árboles para clima caluroso
+        function redirigirACalor() {
+            window.location.href = 'arboles_calor.html';
+        }
+
+        // Función para redirigir a la página de árboles para clima frío
+        function redirigirAFrio() {
+            window.location.href = 'arboles_frio.html';
+        }
+
+        // Función para mostrar u ocultar las opciones de siembra
+        function toggleOpcionesSiembra() {
+            var opcionesSiembra = document.getElementById('opcionesSiembra');
+            var botonVerOpciones = document.querySelector('.boton-ver-opciones-siembra');
+            if (opcionesSiembra.style.display === 'none') {
+                opcionesSiembra.style.display = 'block';
+                botonVerOpciones.textContent = 'Ocultar Opciones de Siembra';
+            } else {
+                opcionesSiembra.style.display = 'none';
+                botonVerOpciones.textContent = 'Ver Opciones de Siembra';
+            }
+        }
+
+        // Llama a la función obtenerClima cuando se inicializa el mapa
+        function inicializarMapa() {
+            // Obtener coordenadas de ubicación actual del usuario
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var latitud = position.coords.latitude;
+                var longitud = position.coords.longitude;
+
+                // Llama a la función obtenerClima con las coordenadas obtenidas
+                obtenerClima(latitud, longitud);
+
+                // Crear mapa Leaflet
+                var mymap = L.map('mapa').setView([latitud, longitud], 10); // Establecer la vista en la ubicación
+
+                // Agregar capa de OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(mymap);
+
+                // Agregar marcador en la ubicación actual
+                L.marker([latitud, longitud]).addTo(mymap)
+                    .bindPopup('Tu ubicación actual')
+                    .openPopup();
+            });
+        }
+
+        // Inicializar el mapa cuando la página esté completamente cargada
+        document.addEventListener('DOMContentLoaded', function () {
+            inicializarMapa();
+        });
+    </script>
+</body>
+
+</html>

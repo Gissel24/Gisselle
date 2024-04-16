@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('fondocomenzar.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    color: white; /* Cambia el color del texto del encabezado a blanco */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white; /* Cambia el color del texto de los enlaces a blanco */
+    font-size: 18px;
+}
+
+#contenido {
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+}
+
+.texto-contenedor {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.texto-grande {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.texto-creativo {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #006600;
+}
+
+#comenzar-aventura {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #006600;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+#comenzar-aventura:hover {
+    background-color: #004d00;
+}
